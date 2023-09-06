@@ -123,3 +123,41 @@ public class TechJobs {
         System.out.println("printJobs is not implemented yet");
     }
 }
+
+/*
+*****
+position type: Data Scientist / Business Intelligence
+name: Sr. IT Analyst (Data/BI)
+employer: Bull Moose Industries
+location: Saint Louis
+core competency: Statistical Analysis
+*****
+
+*****
+position type: Web - Back End
+name: Ruby specialist
+employer: LaunchCode
+location: Saint Louis
+core competency: Javascript
+*****
+
+OR
+
+Search term:
+Example Search Term with No Results
+No Results
+View jobs by (type 'x' to quit):
+0 - Search
+1 - List
+
+Iterate over array list of jobs, nested loop to go through hashmap for specific info
+
+Test:
+Select Run from the Run menu and choose to run the TechJobs class (or if you have recently run it, just
+select the green arrow in the top right corner of the screen).
+*
+Select 1, then 0 for all jobs, double check formatting
+*
+Test that it prints a descriptive message if no jobs are found by selecting “0” to search and then “3” to search
+for a location. Then enter a location that is not in the data (e.g. “Cancun”). Your message should be displayed.
+*/

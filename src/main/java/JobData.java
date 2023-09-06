@@ -95,6 +95,10 @@ public class JobData {
         loadData();
 
         // TODO - implement this method
+        //no duplicate jobs
+        //if new column added auto searches it as well
+        //loops and collection methods, not findByColumnAndValue multiple times (but will look similar in implementation)
+        //call findByValue somewhere in main
         return null;
     }
 
