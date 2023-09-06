@@ -124,7 +124,17 @@ public class TechJobs {
         if (someJobs.isEmpty()) {
             System.out.println("No Results");
         } else {
-            //iterate through job list
+            //iterate through job list. nest, look through array first then hashmaps
+            //would use job instead of position here bc position is a key instead of whole array right? does it even matter?
+            for (HashMap<String, String> job : someJobs) {
+                System.out.println("*****");
+                    //hashmaps nested for loop
+                    for (String key : job.keySet()) {
+                        String value = job.get(key);
+                        System.out.println(key + ": " + value);
+                    }
+                System.out.println("*****\n");
+            }
         }
         //System.out.println("printJobs is not implemented yet");
     }
@@ -164,6 +174,6 @@ select the green arrow in the top right corner of the screen).
 *
 Select 1, then 0 for all jobs, double check formatting
 *
-Test that it prints a descriptive message if no jobs are found by selecting “0” to search and then “3” to search
-for a location. Then enter a location that is not in the data (e.g. “Cancun”). Your message should be displayed.
+Test that it prints a descriptive message if no jobs are found by selecting zero to search and then three to search
+for a location. Then enter a location that is not in the data (e.g. Cancun). Your message should be displayed.
 */
