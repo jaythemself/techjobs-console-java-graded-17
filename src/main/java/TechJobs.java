@@ -119,13 +119,12 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-        //if/else loop here for no results, then iterate through results
-        //why are context actions telling me not to do OR null? isn't that different from empty?
+        //why are context actions telling me not to do OR null? isn't that different from empty? check java docs before demo
+        //my "No Results" has a space/new line the example format doesn't have, issue?
         if (someJobs.isEmpty()) {
             System.out.println("No Results");
         } else {
-            //iterate through job list. nest, look through array first then hashmaps
-            //would use job instead of position here bc position is a key instead of whole array right? does it even matter?
+            //iterate through job data. nest, look through array then hashmaps
             for (HashMap<String, String> job : someJobs) {
                 System.out.println("*****");
                     //hashmaps nested for loop
@@ -136,44 +135,5 @@ public class TechJobs {
                 System.out.println("*****\n");
             }
         }
-        //System.out.println("printJobs is not implemented yet");
     }
 }
-
-/*
-*****
-position type: Data Scientist / Business Intelligence
-name: Sr. IT Analyst (Data/BI)
-employer: Bull Moose Industries
-location: Saint Louis
-core competency: Statistical Analysis
-*****
-
-*****
-position type: Web - Back End
-name: Ruby specialist
-employer: LaunchCode
-location: Saint Louis
-core competency: Javascript
-*****
-
-OR
-
-Search term:
-Example Search Term with No Results
-No Results
-View jobs by (type 'x' to quit):
-0 - Search
-1 - List
-
-Iterate over array list of jobs, nested loop to go through hashmap for specific info
-
-Test:
-Select Run from the Run menu and choose to run the TechJobs class (or if you have recently run it, just
-select the green arrow in the top right corner of the screen).
-*
-Select 1, then 0 for all jobs, double check formatting
-*
-Test that it prints a descriptive message if no jobs are found by selecting zero to search and then three to search
-for a location. Then enter a location that is not in the data (e.g. Cancun). Your message should be displayed.
-*/
