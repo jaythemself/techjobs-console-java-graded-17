@@ -70,7 +70,7 @@ public class TechJobs {
         }
     }
 
-    // ﻿ Returns the key of the selected item from the choices Dictionary
+    //Returns the key of the selected item from the choices Dictionary
     private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {
 
         int choiceIdx = -1;
@@ -120,9 +120,9 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
         //why are context actions telling me not to do OR null? isn't that different from empty? check java docs before demo
-        //my "No Results" has a space/new line the example format doesn't have, issue?
+        //my "No Results" has a space/new line the example format doesn't have, issue? Yes, use a different System.out (not println_)
         if (someJobs.isEmpty()) {
-            System.out.println("No Results");
+            System.out.print("No Results");
         } else {
             //iterate through job data. nest, look through array then hashmaps
             for (HashMap<String, String> job : someJobs) {

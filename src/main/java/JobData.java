@@ -94,12 +94,27 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
-        // TODO - implement this method
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        for (HashMap<String, String> job : allJobs) {
+            for (String key : job.keySet()) {
+                //can reuse key bc local variable so having it in TechJobs is fine, can't reuse value bc line 92 already declares?
+                //this is where case insensitivity is implemented? makes most sense. double check textbook task and java docs for methods
+                String keyValue = job.get(key);
+                    //if keyValue == value.equalsIgnoreCase()
+                    if (keyValue.equalsIgnoreCase(value)) {
+                        jobs.add(job);
+                        //test and make sure this is working right in console? the functions aren't blue like expected in TechJobs
+                        //yeah not working blehhhh
+                }
+            }
+        }
+        return jobs;
+
+        // TODO - implement this method ( done above, why is this comment green? how to replicate? can change color?)
         //no duplicate jobs
         //if new column added auto searches it as well
         //loops and collection methods, not findByColumnAndValue multiple times (but will look similar in implementation)
         //call findByValue somewhere in main
-        return null;
     }
 
     /**
@@ -137,9 +152,11 @@ public class JobData {
             // flag the data as loaded, so we don't do it twice
             isDataLoaded = true;
 
+        //refresh on how this part works before demo, not super fmiliar w catch
         } catch (IOException e) {
             System.out.println("Failed to load job data");
             e.printStackTrace();
+            //intelliJ is suggesting replacing this w "more robust logging"; what does that mean?
         }
     }
 
