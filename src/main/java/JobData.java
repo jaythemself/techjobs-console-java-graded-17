@@ -95,16 +95,20 @@ public class JobData {
         loadData();
 
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
-        for (HashMap<String, String> job : allJobs) {
-            for (String key : job.keySet()) {
+
+        for (HashMap<String, String> row : allJobs) {
+            for (String key : row.keySet()) {
                 //can reuse key bc local variable so having it in TechJobs is fine, can't reuse value bc line 92 already declares?
                 //this is where case insensitivity is implemented? makes most sense. double check textbook task and java docs for methods
-                String keyValue = job.get(key);
+                String keyValue = row.get(key);
                     //if keyValue == value.equalsIgnoreCase()
-                    if (keyValue.equalsIgnoreCase(value)) {
-                        jobs.add(job);
+                    if (keyValue != null && keyValue.equalsIgnoreCase(value)) {
+                        jobs.add(row);
+                        break;
                         //test and make sure this is working right in console? the functions aren't blue like expected in TechJobs
                         //yeah not working blehhhh
+                        //okay should be working?? Searching "Front End" doesn't bring up any duplicate employers. but tried search lower "web" and got no
+                        //results so?? will i need to fix that elsewhere?
                 }
             }
         }

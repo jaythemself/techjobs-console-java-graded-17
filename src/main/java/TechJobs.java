@@ -77,8 +77,7 @@ public class TechJobs {
         Boolean validChoice = false;
         String[] choiceKeys = new String[choices.size()];
 
-        // Put the choices in an ordered structure so we can
-        // associate an integer with each one
+        // Put the choices in an ordered structure so that we can associate an integer with each one
         int i = 0;
         for (String choiceKey : choices.keySet()) {
             choiceKeys[i] = choiceKey;
@@ -120,7 +119,7 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
         //why are context actions telling me not to do OR null? isn't that different from empty? check java docs before demo
-        //my "No Results" has a space/new line the example format doesn't have, issue? Yes, use a different System.out (not println_)
+        //my "No Results" has a space/new line the example format doesn't have, issue? Yes, use a different System.out (not println)
         if (someJobs.isEmpty()) {
             System.out.print("No Results");
         } else {
