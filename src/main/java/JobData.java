@@ -72,7 +72,7 @@ public class JobData {
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
-
+//implement case insensitivity here?
             String aValue = row.get(column);
 
             if (aValue.contains(value)) {
@@ -108,7 +108,7 @@ public class JobData {
                         //test and make sure this is working right in console? the functions aren't blue like expected in TechJobs
                         //yeah not working blehhhh
                         //okay should be working?? Searching "Front End" doesn't bring up any duplicate employers. but tried search lower "web" and got no
-                        //results so?? will i need to fix that elsewhere?
+                        //results so?? will i need to fix that elsewhere? [literally was the next task yeah]
                 }
             }
         }
