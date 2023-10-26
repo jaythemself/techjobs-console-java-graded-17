@@ -23,9 +23,9 @@ public class JobData {
     /**
      * Fetch list of all values from loaded data,
      * without duplicates, for a given column.
-     *
-     * @param field The column to retrieve values from
-     * @return List of all of the values of the given field
+     * -
+     * @ param -field- The column to retrieve values from
+     * @ return List of all the values of the given field
      */
     public static ArrayList<String> findAll(String field) {
 
@@ -56,13 +56,13 @@ public class JobData {
     /**
      * Returns results of search the jobs data by key/value, using
      * inclusion of the search term.
-     *
+     * -
      * For example, searching for employer "Enterprise" will include results
      * with "Enterprise Holdings, Inc".
-     *
-     * @param column   Column that should be searched.
-     * @param value Value of teh field to search for
-     * @return List of all jobs matching the criteria
+     * -
+     * @ param -column-   Column that should be searched.
+     * @ param -value- Value of teh field to search for
+     * @ return List of all jobs matching the criteria
      */
     public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
 
@@ -72,11 +72,14 @@ public class JobData {
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
-//implement case insensitivity here?
-            String aValue = row.get(column);
+//implement case insensitivity here? toLower/toUpper() instead of the one instance of ignoreCase()?
+            //if so tack it to 77 after get(column) w dot notation?
+            String aValue = row.get(column).toLowerCase();
 
             if (aValue.contains(value)) {
                 jobs.add(row);
+                //break; <- no. this makes the program quit after encountering the first valid result (ie searching
+                // "Web" should bring up several listings, but with this break would bring up only one.
             }
         }
 
@@ -85,9 +88,9 @@ public class JobData {
 
     /**
      * Search all columns for the given term
-     *
-     * @param value The search term to look for
-     * @return      List of all jobs with at least one field containing the value
+     * -
+     * @ param -value- The search term to look for
+     * @ return      List of all jobs with at least one field containing the value
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
@@ -100,6 +103,7 @@ public class JobData {
             for (String key : row.keySet()) {
                 //can reuse key bc local variable so having it in TechJobs is fine, can't reuse value bc line 92 already declares?
                 //this is where case insensitivity is implemented? makes most sense. double check textbook task and java docs for methods
+                //test toLowerCase (in addition to line 77)?
                 String keyValue = row.get(key);
                     //if keyValue == value.equalsIgnoreCase()
                     if (keyValue != null && keyValue.equalsIgnoreCase(value)) {
@@ -114,7 +118,7 @@ public class JobData {
         }
         return jobs;
 
-        // TODO - implement this method ( done above, why is this comment green? how to replicate? can change color?)
+        // TODO - implement this method ( done above, why is this comment green? how to replicate? can change color?) no it's bc to do duh
         //no duplicate jobs
         //if new column added auto searches it as well
         //loops and collection methods, not findByColumnAndValue multiple times (but will look similar in implementation)

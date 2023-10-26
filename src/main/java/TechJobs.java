@@ -61,8 +61,10 @@ public class TechJobs {
                 System.out.println("\nSearch term:");
 //should I keep using IgnoreCase or should i convert search terms to all upper/lowercase and alter the jobdata to be upper/lower while comparing?
 //is IgnoreCase even applicable here or would it just be while fetching data? will using IgnoreCase cover all potential search terms? reread doc
-                String searchTerm = in.nextLine();
-
+                String searchTerm = in.nextLine().toLowerCase();
+//as it is searching all (0, 0) and then entering a partial search ("web" vs complete "javascript") kicks no results response. how can i fix that
+                //and is it expected of the assignment
+                //maybe else if?? is it worth messing with at this point tho
                 if (searchField.equals("all")) {
                     printJobs(JobData.findByValue(searchTerm));
                 } else {
