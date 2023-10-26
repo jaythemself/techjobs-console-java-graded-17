@@ -104,9 +104,9 @@ public class JobData {
                 //can reuse key bc local variable so having it in TechJobs is fine, can't reuse value bc line 92 already declares?
                 //this is where case insensitivity is implemented? makes most sense. double check textbook task and java docs for methods
                 //test toLowerCase (in addition to line 77)?
-                String keyValue = row.get(key);
+                String keyValue = row.get(key).toLowerCase();
                     //if keyValue == value.equalsIgnoreCase()
-                    if (keyValue != null && keyValue.equalsIgnoreCase(value)) {
+                    if (keyValue.contains(value)) {
                         jobs.add(row);
                         break;
                         //test and make sure this is working right in console? the functions aren't blue like expected in TechJobs
