@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -57,16 +56,18 @@ public class TechJobs {
                 // How does the user want to search (e.g. by skill or employer)
                 String searchField = getUserSelection("Search by:", columnChoices);
 
-                // What is their search term?
+                // What is their search term? Gets user input
                 System.out.println("\nSearch term:");
-//should I keep using IgnoreCase or should i convert search terms to all upper/lowercase and alter the jobdata to be upper/lower while comparing?
-//is IgnoreCase even applicable here or would it just be while fetching data? will using IgnoreCase cover all potential search terms? reread doc
+
+                // Initially used IgnoreCase instead of toLowerCase, became inapplicable when covering all potential search terms in later tasks
+                // (conflicted when changing findByColumnAndValue/findByValue in JobData/with partial searches)
+                // Takes user input and alters it to compare nicely to JobData
                 String searchTerm = in.nextLine().toLowerCase();
-//as it is searching all (0, 0) and then entering a partial search ("web" vs complete "javascript") kicks no results response. how can i fix that
-                //and is it expected of the assignment
-                //maybe else if?? is it worth messing with at this point tho
+
+                // Searches every column for either partial or full occurrence of search term
                 if (searchField.equals("all")) {
                     printJobs(JobData.findByValue(searchTerm));
+                // Searches specified column for either partial or full occurrence of search term
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -121,21 +122,24 @@ public class TechJobs {
     }
 
     // Print a list of jobs
-    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
-        //why are context actions telling me not to do OR null? isn't that different from empty? check java docs before demo
-        //my "No Results" has a space/new line the example format doesn't have, issue? Yes, use a different System.out (not println)
-        if (someJobs.isEmpty()) {
+    private static void printJobs(ArrayList<HashMap<String, String>> pertinentJobs) {
+
+        // (Original pertinentJobs was someJobs, changed to be more specific)
+        // Checks to see if any jobs match user search, and if there are none prints "No Results"
+        if (pertinentJobs.isEmpty()) {
             System.out.print("No Results");
+        // If there ARE jobs that match what the user is looking for, prints them in requested format
+            // Failed tests bc put \n at end of 142 println instead of beginning of 136 println
         } else {
-            //iterate through job data. nest, look through array then hashmaps
-            for (HashMap<String, String> job : someJobs) {
-                System.out.println("*****");
-                    //hashmaps nested for loop
+            // Iterate through JobData. Nested to first look through array, then hashmaps
+            for (HashMap<String, String> job : pertinentJobs) {
+                System.out.println("\n*****");
+                    // Hashmaps nested for looping
                     for (String key : job.keySet()) {
                         String value = job.get(key);
                         System.out.println(key + ": " + value);
                     }
-                System.out.println("*****\n");
+                System.out.println("*****");
             }
         }
     }

@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -61,7 +60,7 @@ public class JobData {
      * with "Enterprise Holdings, Inc".
      * -
      * @ param -column-   Column that should be searched.
-     * @ param -value- Value of teh field to search for
+     * @ param -value- Value of the field to search for
      * @ return List of all jobs matching the criteria
      */
     public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
@@ -72,14 +71,14 @@ public class JobData {
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
-//implement case insensitivity here? toLower/toUpper() instead of the one instance of ignoreCase()?
-            //if so tack it to 77 after get(column) w dot notation?
+            // Initially used ignoreCase() but it conflicted with later tasks
+            // [idr exactly why, I think it wasn't working with dot notation somewhere along the line here in JobData]
             String aValue = row.get(column).toLowerCase();
 
             if (aValue.contains(value)) {
                 jobs.add(row);
-                //break; <- no. this makes the program quit after encountering the first valid result (ie searching
-                // "Web" should bring up several listings, but with this break would bring up only one.
+                // Placing a "break;" here would make the program quit searching after encountering the first valid result
+                // (ie searching "Web" should bring up several listings, but with this break would bring up only one)
             }
         }
 
@@ -101,28 +100,14 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
             for (String key : row.keySet()) {
-                //can reuse key bc local variable so having it in TechJobs is fine, can't reuse value bc line 92 already declares?
-                //this is where case insensitivity is implemented? makes most sense. double check textbook task and java docs for methods
-                //test toLowerCase (in addition to line 77)?
                 String keyValue = row.get(key).toLowerCase();
-                    //if keyValue == value.equalsIgnoreCase()
                     if (keyValue.contains(value)) {
                         jobs.add(row);
                         break;
-                        //test and make sure this is working right in console? the functions aren't blue like expected in TechJobs
-                        //yeah not working blehhhh
-                        //okay should be working?? Searching "Front End" doesn't bring up any duplicate employers. but tried search lower "web" and got no
-                        //results so?? will i need to fix that elsewhere? [literally was the next task yeah]
                 }
             }
         }
         return jobs;
-
-        // TODO - implement this method ( done above, why is this comment green? how to replicate? can change color?) no it's bc to do duh
-        //no duplicate jobs
-        //if new column added auto searches it as well
-        //loops and collection methods, not findByColumnAndValue multiple times (but will look similar in implementation)
-        //call findByValue somewhere in main
     }
 
     /**
@@ -164,7 +149,7 @@ public class JobData {
         } catch (IOException e) {
             System.out.println("Failed to load job data");
             e.printStackTrace();
-            //intelliJ is suggesting replacing this w "more robust logging"; what does that mean?
+            // intelliJ is suggesting replacing this w "more robust logging"; what does that mean?
         }
     }
 
